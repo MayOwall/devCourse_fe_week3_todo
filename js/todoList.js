@@ -1,15 +1,14 @@
 //생성자 함수 사용
-function TodoList (params) {
+function TodoList ({target, initialState}) {
   const todoListElement = document.createElement("div");
-  const target = params.target;
   target.appendChild(todoListElement);
 
-  this.state = params.initialState;
+  this.state = initialState;
 
   this.render = () => {
     todoListElement.innerHTML = `
       <ul>
-        ${this.state.map(todo => `<li>${todo.text}</li>`).join("")}
+        ${this.state.map(({text}) => `<li>${text}</li>`).join("")}
       </ul>
     `
   };
